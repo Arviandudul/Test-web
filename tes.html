@@ -33,11 +33,11 @@
         
          /*   menu  */
          
-        .menu-background {background-color:rgba(0, 0, 0, 0.5);width:100%;height:100%;position:fixed;backdrop-filter:blur(8px);opacity:0;display:none;transition: display 1s, opacity 1s}
+        .menu-background {background-color:rgba(0, 0, 0, 0.5);width:100%;height:100%;position:fixed;backdrop-filter:blur(8px);opacity:0;display:none;transition: display 1s, opacity 1s;top:0}
         
-          .menu {background-color:black;width:65%;height:100%;position:fixed;left: -100%;transition: left 0.5s}  
+          .menu {background-color:black;width:65%;height:100%;position:fixed;left: -100%;transition: left 0.5s;top:0}  
           
-        .head {padding:10px;color:black;background-color:white;width:50%;margin:10px;text-align:center;font-family: '8BIT WONDER', sans-serif;font-size:10px;border-radius:50px;position:relative;}
+        .head {padding:10px;color:black;background-color:white;width:50%;margin:10px;text-align:center;font-family: '8BIT WONDER', sans-serif;font-size:10px;border-radius:50px;position:relative;top:0}
                 
         /* transition */
                   
@@ -52,7 +52,7 @@
                                                                                           
       </style> 
       <style>
-         .redtheme .bg {background-image:url('https://i.gifer.com/O7BZ.gif')}
+         body.bg.redtheme {background-image:url('https://i.gifer.com/O7BZ.gif')}
          .redtheme .icon {border:2px solid #FF2400;}
          .redtheme h1 {border: 5px solid #FF2400}
          .redtheme .play {border: 5px double #FF2400;}
@@ -90,7 +90,6 @@
         </script>
         <!-- menu script -->
         
-    <div class="bg" id="bg">
          <p class="pixel" style="text-align:center">TEST HTML</p>
          
          <!-- icon -->
@@ -142,7 +141,6 @@ document.getElementById("time").innerHTML = d.toDateString();
         <br>
         <div style="float:left;">
            <img src="https://cdn.britannica.com/48/1648-004-A33B72D8/Flag-Indonesia.jpg" alt="Flag-Indonesia" width="15%" height="30%" onclick="indo()"><img src="data:image/png;base64,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" alt="cAM8PDw8PDw8PD" width="19%" height="30%" onclick="eng()">
-        </div>
         </div>
         <script>
             function indo() {document.getElementById("indo").innerHTML = "MAINKAN";document.getElementById("indo2").innerHTML = "PILIH KARAKTER";document.getElementById("indo3").innerHTML = "Tonton beberapa video epep yg keren";document.getElementById("indo4").innerHTML = "Sebelum";document.getElementById("indo5").innerHTML = "Lanjut"}
