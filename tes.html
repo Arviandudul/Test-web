@@ -11,7 +11,7 @@
           <style>
           body {height:100%;margin:0}
           * {box-sizing: border-box}
-          .bg {background-image:url('https://i.gifer.com/J59.gif');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-size: 150% 100%;overflow:auto}
+          .bg {background-image:url('https://i.gifer.com/J59.gif');background-repeat: no-repeat;background-attachment: scroll;background-size: cover;background-size: 150% 100%;overflow:auto}
           h1 {border: 5px solid #00FFFF;margin: 2px;font-family: 'Common Pixel',sans-serif;color: white;text-align: center;}
           .play {border: 5px double #00FFFF;overflow:auto}
           .play:hover {color: #00FFFF;font-size: 220%}
@@ -68,8 +68,8 @@
     <body class="bg">
       
         <!-- menu -->
-        <div class="menu-background" id="menubg"></div>
-        <div class="menu" id="menubox"><p class="head" id="close">close menu</p></div>
+        <div class="menu-background" id="menubg" onclick="enableScroll()"></div>
+        <div class="menu" id="menubox"><p class="head" id="close" onclick="enableScroll()">close menu</p></div>
         <!-- menu -->
         
         <!-- menu script -->
@@ -89,13 +89,29 @@
       })
   })  
         </script>
+        <script>
+            var keys = {37: 1, 38: 1, 39: 1, 40: 1}; function preventDefault(e) { e.preventDefault(); } function preventDefaultForScrollKeys(e) { if (keys[e.keyCode]) { preventDefault(e); return false; } } 
+
+            
+            
+            var supportsPassive = false; try { window.addEventListener("#open", null, Object.defineProperty({}, "passive", { get: function () { supportsPassive = true; } })); } catch(e) {} 
+
+       var wheelOpt = supportsPassive ? { passive: false } : false; var wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel"; 
+       
+       function disableScroll() { window.addEventListener("DOMMouseScroll", preventDefault, false);  window.addEventListener(wheelEvent, preventDefault, wheelOpt);   window.addEventListener("touchmove", preventDefault, wheelOpt);  window.addEventListener("keydown", preventDefaultForScrollKeys, false); } 
+       
+       function enableScroll() { window.removeEventListener("DOMMouseScroll", preventDefault, false); window.removeEventListener(wheelEvent, preventDefault, wheelOpt); window.removeEventListener("touchmove", preventDefault, wheelOpt); window.removeEventListener("keydown", preventDefaultForScrollKeys, false); }
+
+
+        </script>
+
         <!-- menu script -->
         
          <p class="pixel" style="text-align:center">TEST HTML</p>
          
          <!-- icon -->
          <div class="icon">
-             <img src="images/menu.png" alt="menu.png" id="open">
+             <img src="images/menu.png" alt="menu.png" id="open" onclick="disableScroll()">
   <img src="images/clock.png" alt="clock.png" onclick="w3.toggleShow('.time')">
   <img src="images/theme.png" alt="theme.png" onclick="theme()"> 
   </div>
